@@ -4,8 +4,13 @@ using SamuraiAppCore.Domain.Model;
 
 namespace SamuraiAppCore.Data
 {
-    public class SamuraiContext : DbContext
+    public class SamuraiContext : IdentityDbContext<ApplicationUser>
     {
+        public SamuraiContext(DbContextOptions<SamuraiContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<Samurai> Samurais { get; set; }
         public DbSet<Battle> Battles { get; set; }
         public DbSet<Quote> Quotes { get; set; }
@@ -30,10 +35,10 @@ namespace SamuraiAppCore.Data
               .ValueGeneratedOnAddOrUpdate()
               .IsConcurrencyToken();
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(
-              "Server = .; Database = SamuraiData; Trusted_Connection = True; ");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(
+        //      "Server = .; Database = SamuraiData; Trusted_Connection = True; ");
+        //}
     }
 }

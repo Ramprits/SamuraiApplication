@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SamuraiAppCore.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SamuraiAppCore.Api
 {
@@ -36,7 +39,13 @@ namespace SamuraiAppCore.Api
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddDbContext<SamuraiContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<SamuraiContext>()
+                .AddDefaultTokenProviders();
             services.AddMvc();
         }
 
