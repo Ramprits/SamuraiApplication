@@ -1,0 +1,19 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+    "Microsoft.EntityFrameworkCore.Tools": "1.1.0",
+    "NETStandard.Library": "1.6.1",
+    "SamuraiAppCore.Domain": "1.0.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+  "tools": {
+    "Microsoft.EntityFrameWorkCore.Tools.DotNet": "1.1.0-preview4"
+  }
+}

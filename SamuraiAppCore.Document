@@ -1,0 +1,12 @@
+Creating Asp.Nert Core Application Architecture 
+Required Library
+1. Microsoft.EntityFrameworkCore.SqlServer
+2. Let's Add Domain in Data project Like "SamuraiAppCore.Domain": {"target": "project"}.
+3. Microsoft.EntityFrameworkCore.Tools. And Microsoft.EntityFrameworkCore.Tools.DotNet
+4. https://marketplace.visualstudio.com/items?itemName=MadsKristensen.OpenCommandLine
+You will get error .
+You have to add console App.After Add Console CoreUI then Add reference Domain and Data project.
+run dotnet ef --startup-project ../Core.UI
+dotnet ef --startup-project ../Core.UI migrations add init
+If this will throw error then add 
+Microsoft.EntityFrameworkCore.Design in Core.UI project.json file
